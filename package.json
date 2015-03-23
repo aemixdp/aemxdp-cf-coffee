@@ -1,0 +1,18 @@
+{
+  "name": "aemxdp-cf",
+  "version": "1.0.0",
+  "description": "Codeforces problem solutions",
+  "scripts": {
+    "%last-filename": "ls -tp | grep coffee$ | head -1",
+    "%last-name": "npm run %last-filename | tail -1 | cut -d '.' -f 1",
+    "%compile-last": "npm run %last-filename | tail -1 | xargs -i coffee -o out --compile {}",
+    "%run-last": "npm run %last-name | tail -1 | npm run %run-with-tests",
+    "%run-with-tests": "xargs -I% sh -c 'find %*.in -exec sh -c \"cat {} | d8 out/%.js\" \\;'",
+    "compile": "coffee --compile *.coffee **/*.coffee",
+    "clean": "rm out/*",
+    "persist": "cp *.in inputs && cp *.coffee solutions && rm *.in && rm *.coffee",
+    "last": "npm run %compile-last && npm run %run-last"
+  },
+  "author": "aemxdp@gmail.com",
+  "license": "WTFPL"
+}
