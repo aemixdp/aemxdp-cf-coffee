@@ -20,8 +20,6 @@ for line in lines
   pad = Math.floor(rlpad / 2)
   padstr = chars(pad, ' ')
   if rlpad % 2
-    lpad = pad
-    rpad = pad
     if incl
       print('*' + padstr + ' ' + line + padstr + '*')
       incl = false
